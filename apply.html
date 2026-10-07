@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>รับสมัครนักศึกษา - มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ</title>
+  <link rel="stylesheet" href="css/1111.css">
+  <!-- นำเข้าฟอนต์ Kanit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- สไตล์ช่องกรอกให้เหมือนดีไซน์: ช่องมนสีพีช ตัวอักษรเทา กึ่งกลาง -->
+  <style>
+    .form-card {
+      background: transparent !important;
+      box-shadow: none !important;
+      border: none !important;
+      border-radius: 0 !important;
+    }
+    .applicant-form input,
+    .applicant-form select {
+      width: 100%;
+      box-sizing: border-box;
+      font-family: 'Kanit', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      padding: 8px 14px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      background-color: #FEDFD3;
+      color: #555;
+      text-align: center;
+      text-align-last: center;
+      -webkit-appearance: none;
+      appearance: none;
+      outline: none;
+    }
+    .applicant-form input::placeholder { color: #a0a0a0; opacity: 1; }
+    .applicant-form select:required:invalid { color: #a0a0a0; }
+    .applicant-form select option { color: #555; }
+    .applicant-form input:focus,
+    .applicant-form select:focus {
+      border-color: #f47920;
+    }
+    .applicant-form input[readonly] { color: #a0a0a0; cursor: default; }
+    .applicant-form .invalid { border-color: #d93025 !important; }
+    .applicant-form .error-msg {
+      display: block;
+      color: #d93025;
+      font-size: 0.75rem;
+      margin-top: 3px;
+      text-align: center;
+    }
+    .applicant-form .error-msg:empty { display: none; }
+    .form-actions { text-align: center; margin-top: 18px; }
+    .btn-submit {
+      font-family: 'Kanit', sans-serif;
+      font-size: 0.95rem;
+      padding: 8px 32px;
+      border: none;
+      border-radius: 999px;
+      background: #f47920;
+      color: #fff;
+      cursor: pointer;
+    }
+    .btn-submit:hover { background: #d8650f; }
+    .success-box {
+      display: none;
+      margin: 14px auto 0;
+      padding: 10px 16px;
+      max-width: 500px;
+      background: #e8f5e9;
+      border: 1px solid #4caf50;
+      border-radius: 12px;
+      color: #1b5e20;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ส่วนหัว (Header) -->
+  <header class="site-header">
+    <div class="header-overlay">
+      <div class="header-container">
+        <div class="header-title">
+          <h1>รับสมัครนักศึกษา</h1>
+          <p>มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ</p>
+        </div>
+        <div class="header-logo">
+          <span class="logo-orange">K</span><span class="logo-green">MUTNB</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-bar"></div>
+  </header>
+
+  <!-- แถบเมนูด้านบน (Navigation) -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <ul>
+        <li><a href="index.html">หน้าแรก</a></li>
+        <li><a href="apply.html">รับสมัคร</a></li>
+        <li><a href="subject.html">หลักสูตร</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- เนื้อหาหลัก (Main Content) -->
+  <main class="main-content">
+
+    <!-- ภาพแบนเนอร์ประชาสัมพันธ์ -->
+    <section class="banner-section">
+      <img src="img/5.PNG" alt="เปิดรับสมัครแล้ววันนี้ DEK70 FITM" class="banner-img">
+    </section>
+
+    <!-- แบบฟอร์มการสมัคร -->
+    <section class="form-card">
+
+      <!-- โลโก้และหัวข้อฟอร์ม -->
+      <div class="form-header">
+        <img src="img/4.png" alt="ตรามหาวิทยาลัย" class="university-logo">
+        <h2>การสมัครเข้าศึกษาต่อ ปีการศึกษา 2570</h2>
+        <h3>มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ</h3>
+        <p class="sub-notice">สมัครเรียน (ข้อมูลที่กรอกจะถูกใช้เป็นข้อมูลผู้สมัครเข้าศึกษาเท่านั้น)</p>
+      </div>
+
+      <form class="applicant-form" id="applicantForm" novalidate>
+
+        <!-- Section 1: ข้อมูลผู้สมัคร -->
+        <div class="form-section">
+          <h3 class="section-title">ข้อมูลผู้สมัคร</h3>
+
+          <div class="form-group center-text">
+            <label for="prefix">คำนำหน้าชื่อ</label>
+            <select id="prefix" name="prefix" required>
+              <option value="" selected disabled>นาย/นางสาว</option>
+              <option>นาย</option>
+              <option>นางสาว</option>
+              <option>นาง</option>
+            </select>
+            <span class="error-msg"></span>
+          </div>
+
+          <div class="form-group center-text">
+            <label for="fullname">ชื่อ-นามสกุล</label>
+            <input type="text" id="fullname" name="fullname" placeholder="ชื่อ-นามสกุล" required>
+            <span class="error-msg"></span>
+          </div>
+
+          <div class="form-group center-text">
+            <label for="idcard">เลขบัตรประชาชน</label>
+            <input type="text" id="idcard" name="idcard" placeholder="x-xxxx-xxxxx-xx-x" inputmode="numeric" maxlength="17" autocomplete="off" required>
+            <span class="error-msg"></span>
+          </div>
+
+          <div class="form-group center-text">
+            <label for="birthdate">วัน/เดือน/ปี</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+            <span class="error-msg"></span>
+          </div>
+
+          <div class="form-row triple-row">
+            <div class="form-group center-text">
+              <label for="religion">ศาสนา</label>
+              <select id="religion" name="religion" required>
+                <option value="" selected disabled>เลือก</option>
+                <option>พุทธ</option>
+                <option>อิสลาม</option>
+                <option>คริสต์</option>
+                <option>ฮินดู</option>
+                <option>ซิกข์</option>
+                <option>อื่น ๆ</option>
+              </select>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group center-text">
+              <label for="nationality">สัญชาติ</label>
+              <input type="text" id="nationality" name="nationality" placeholder="ไทย" value="ไทย" required>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group center-text">
+              <label for="gender">เพศ</label>
+              <select id="gender" name="gender" required>
+                <option value="" selected disabled>เลือก</option>
+                <option>ชาย</option>
+                <option>หญิง</option>
+              </select>
+              <span class="error-msg"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: ข้อมูลวุฒิการศึกษาที่ใช้สมัคร -->
+        <div class="form-section">
+          <h3 class="section-title">ข้อมูลวุฒิการศึกษาที่ใช้สมัคร</h3>
+
+          <div class="form-group center-text">
+            <label for="education">วุฒิการศึกษาที่สมัคร</label>
+            <select id="education" name="education" required>
+              <option value="" selected disabled>เลือกวุฒิการศึกษา</option>
+              <option>มัธยมศึกษาปีที่ 6</option>
+              <option>ประกาศนียบัตรวิชาชีพ (ปวช.)</option>
+              <option>ประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)</option>
+              <option>เทียบเท่า (กศน.)</option>
+            </select>
+            <span class="error-msg"></span>
+          </div>
+
+          <div class="form-group center-text">
+            <label for="major">ประเภทวิชา</label>
+            <select id="major" name="major" required>
+              <option value="" selected disabled>เลือกประเภทวิชา</option>
+              <option>วิทย์-คณิต</option>
+              <option>ศิลป์-คำนวณ</option>
+              <option>ศิลปภาษา</option>
+              <option>สายอาชีพ (ปวช./ปวส.)</option>
+              <option>อื่น ๆ</option>
+            </select>
+            <span class="error-msg"></span>
+          </div>
+
+          <div class="form-group center-text">
+            <label for="school">ชื่อสถาบันการศึกษา</label>
+            <input type="text" id="school" name="school" placeholder="ชื่อสถาบันการศึกษา" required>
+            <span class="error-msg"></span>
+          </div>
+
+          <div class="form-group center-text">
+            <label for="gpax">GPAX</label>
+            <input type="number" id="gpax" name="gpax" placeholder="0.00 - 4.00" min="0" max="4" step="0.01" inputmode="decimal" required>
+            <span class="error-msg"></span>
+          </div>
+        </div>
+
+        <!-- Section 3: เลือกคณะและสาขาวิชาที่ต้องการสมัคร -->
+        <div class="form-section">
+          <h3 class="section-title">เลือกคณะและสาขาวิชาที่ต้องการสมัคร</h3>
+
+          <div class="form-row inline-row">
+            <div class="form-group inline-group">
+              <label for="faculty">คณะ:</label>
+              <select id="faculty" name="faculty" required>
+                <option value="" selected disabled>เลือกคณะ</option>
+                <option>เทคโนโลยีและการจัดการอุตสาหกรรม</option>
+              </select>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group inline-group">
+              <label for="branch">สาขา:</label>
+              <select id="branch" name="branch" required disabled>
+                <option value="" selected disabled>เลือกสาขาวิชา</option>
+              </select>
+              <span class="error-msg"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ส่วนเตือนตรวจสอบข้อมูล -->
+        <div class="form-confirmation">
+          <h3 class="confirm-title">ตรวจสอบข้อมูลการสมัคร</h3>
+          <div class="warning-text">
+            <p>กรุณาตรวจสอบข้อมูลการสมัครของท่านให้ถูกต้องและครบถ้วนก่อนส่งใบสมัครเพื่อประโยชน์ของท่านเอง หากพบข้อมูลไม่ถูกต้องหรือไม่ครบถ้วน ท่านอาจเสียสิทธิ์ในการพิจารณาเข้าศึกษาได้</p>
+            <p>เมื่อทำการบันทึกข้อมูลเรียบร้อยแล้ว ระบบจะทำการจัดเก็บและวิเคราะห์ข้อมูลของผู้สมัคร ซึ่งท่านสามารถตรวจสอบข้อมูลประจำตัว, วุฒิการศึกษา และสาขาวิชาที่เลือก ให้ถูกต้องก่อนกดส่งใบสมัคร</p>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-submit">ส่งใบสมัคร</button>
+          </div>
+          <div class="success-box" id="successBox" role="status"></div>
+        </div>
+
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ส่วนท้าย (Footer) -->
+  <footer class="site-footer">
+    <div class="footer-overlay">
+      <div class="footer-container">
+
+        <div class="footer-contact">
+          <h3>สถานที่ตั้ง</h3>
+          <p>📍 มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ</p>
+          <p class="address-detail">1518 ถนนประชาราษฎร์ 1 แขวงวงศ์สว่าง เขตบางซื่อ กรุงเทพฯ 10800</p>
+
+          <h3>ติดต่อ</h3>
+          <p>📞 โทร +66 2-555-2000</p>
+          <p>📠 แฟกซ์ +66 2-555-2000</p>
+          <p>✉ อีเมล : contact@op.kmutnb.ac.th</p>
+        </div>
+
+        <div class="footer-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.3311697241257!2d100.51167431526466!3d13.812260990308064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29b8778000001%3A0x133d1a8069d300e8!2sKing%20Mongkut's%20University%20of%20Technology%20North%20Bangkok!5e0!3m2!1sth!2sth!4v1680000000000!5m2!1sth!2sth"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('applicantForm');
+      var idcard = document.getElementById('idcard');
+      var successBox = document.getElementById('successBox');
+
+      // รายการสาขาของแต่ละคณะ (เพิ่มคณะ/สาขาใหม่ได้ที่นี่ และเพิ่ม <option> ในช่องคณะ)
+      var BRANCHES = {
+        'เทคโนโลยีและการจัดการอุตสาหกรรม': [
+          'IT เทคโนโลยีสารสนเทศ',
+          'ITT วิทยาการสารสนเทศผ่านเว็บ (โครงการพิเศษ)',
+          'ITI วิศวกรรมสารสนเทศและเครือข่าย (เทียบโอน)',
+          'INE วิศวกรรมเครือข่าย',
+          'INET วิศวกรรมเครือข่าย'
+        ]
+      };
+      var faculty = document.getElementById('faculty');
+      var branch = document.getElementById('branch');
+      faculty.addEventListener('change', function () {
+        var list = BRANCHES[faculty.value] || [];
+        branch.innerHTML = '<option value="" selected disabled>เลือกสาขาวิชา</option>';
+        list.forEach(function (name) {
+          var o = document.createElement('option');
+          o.textContent = name;
+          branch.appendChild(o);
+        });
+        branch.disabled = list.length === 0;
+        setError(branch, '');
+      });
+
+      document.getElementById('birthdate').max = new Date().toISOString().split('T')[0];
+
+      // จัดรูปแบบเลขบัตรประชาชนอัตโนมัติ: x-xxxx-xxxxx-xx-x
+      idcard.addEventListener('input', function () {
+        var d = idcard.value.replace(/\D/g, '').slice(0, 13);
+        var parts = [d.slice(0, 1), d.slice(1, 5), d.slice(5, 10), d.slice(10, 12), d.slice(12, 13)];
+        idcard.value = parts.filter(Boolean).join('-');
+      });
+
+      function validIdCard(value) {
+        var d = value.replace(/\D/g, '');
+        if (d.length !== 13) return false;
+        var sum = 0;
+        for (var i = 0; i < 12; i++) sum += parseInt(d[i], 10) * (13 - i);
+        return ((11 - (sum % 11)) % 10) === parseInt(d[12], 10);
+      }
+
+      function setError(field, msg) {
+        var box = field.closest('.form-group');
+        var out = box && box.querySelector('.error-msg');
+        field.classList.toggle('invalid', !!msg);
+        if (out) out.textContent = msg || '';
+      }
+
+      function validateField(f) {
+        var v = f.value.trim();
+        if (f.required && !v) {
+          setError(f, f.tagName === 'SELECT' ? 'กรุณาเลือกข้อมูล' : 'กรุณากรอกข้อมูล');
+          return false;
+        }
+        if (f === idcard && !validIdCard(v)) {
+          setError(f, 'เลขบัตรประชาชนไม่ถูกต้อง');
+          return false;
+        }
+        if (f.id === 'gpax') {
+          var n = parseFloat(v);
+          if (isNaN(n) || n < 0 || n > 4) {
+            setError(f, 'GPAX ต้องอยู่ระหว่าง 0.00 - 4.00');
+            return false;
+          }
+        }
+        setError(f, '');
+        return true;
+      }
+
+      var fields = form.querySelectorAll('input:not([readonly]), select');
+      fields.forEach(function (f) {
+        f.addEventListener('blur', function () { validateField(f); });
+        f.addEventListener('input', function () {
+          if (f.classList.contains('invalid')) validateField(f);
+        });
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        successBox.style.display = 'none';
+        var firstBad = null;
+        fields.forEach(function (f) {
+          if (!validateField(f) && !firstBad) firstBad = f;
+        });
+        if (firstBad) {
+          firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          firstBad.focus();
+          return;
+        }
+
+        // รวบรวมข้อมูล (นำไปส่งต่อให้เซิร์ฟเวอร์/API ได้ที่นี่)
+        var data = {};
+        new FormData(form).forEach(function (v, k) { data[k] = v; });
+        console.log('ข้อมูลผู้สมัคร:', data);
+
+        // เก็บข้อมูลไว้ แล้วไปหน้ายืนยันการสมัคร (apply_2.html)
+        try {
+          sessionStorage.setItem('applicantData', JSON.stringify(data));
+        } catch (err) {
+          alert('ไม่สามารถบันทึกข้อมูลชั่วคราวได้ กรุณาเปิดการใช้งานพื้นที่จัดเก็บของเบราว์เซอร์');
+          return;
+        }
+        window.location.href = 'apply_2.html';
+      });
+
+      // ถ้ากลับมาจากหน้ายืนยัน (กด "แก้ไขข้อมูล") ให้เติมข้อมูลเดิมกลับเข้าฟอร์ม
+      (function restore() {
+        var saved = null;
+        try { saved = JSON.parse(sessionStorage.getItem('applicantData') || 'null'); } catch (err) {}
+        if (!saved) return;
+        Object.keys(saved).forEach(function (k) {
+          var el = form.elements[k];
+          if (!el || k === 'branch') return;
+          el.value = saved[k];
+          if (k === 'faculty') faculty.dispatchEvent(new Event('change'));
+        });
+        if (saved.branch) branch.value = saved.branch;
+      })();
+    })();
+  </script>
+
+</body>
+</html>

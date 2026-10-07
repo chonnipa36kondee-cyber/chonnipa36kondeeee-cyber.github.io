@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ยืนยันการสมัคร - มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ</title>
+  <link rel="stylesheet" href="css/1111.css">
+  <!-- นำเข้าฟอนต์ Kanit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    .form-card {
+      background: transparent !important;
+      box-shadow: none !important;
+      border: none !important;
+      border-radius: 0 !important;
+    }
+    .summary { max-width: 640px; margin: 0 auto; }
+    .summary-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 8px 0;
+    }
+    .summary-row .s-label {
+      flex: 0 0 38%;
+      text-align: right;
+      font-size: 0.9rem;
+    }
+    .summary-row .s-value {
+      flex: 1;
+      box-sizing: border-box;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #FEDFD3;
+      color: #555;
+      font-family: 'Kanit', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      text-align: center;
+      word-break: break-word;
+    }
+    .summary-row.triple { display: inline-flex; width: 32%; }
+    .summary-row.triple .s-label { flex: 0 0 auto; text-align: left; }
+    .triple-wrap { display: flex; gap: 8px; justify-content: space-between; }
+    .triple-wrap .summary-row { flex: 1; flex-direction: column; align-items: stretch; gap: 4px; }
+    .triple-wrap .s-label { text-align: left; flex: none; }
+
+    .actions { text-align: center; margin-top: 24px; }
+    .actions button, .actions a.btn {
+      display: inline-block;
+      font-family: 'Kanit', sans-serif;
+      font-size: 0.95rem;
+      padding: 8px 32px;
+      margin: 4px 6px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-confirm { background: #f47920; color: #fff; }
+    .btn-confirm:hover { background: #d8650f; }
+    .btn-edit { background: #e0e0e0; color: #333; }
+    .btn-edit:hover { background: #cfcfcf; }
+
+    .result {
+      display: none;
+      max-width: 560px;
+      margin: 24px auto 0;
+      padding: 20px;
+      text-align: center;
+      background: #e8f5e9;
+      border: 1px solid #4caf50;
+      border-radius: 16px;
+      color: #1b5e20;
+    }
+    .result h3 { margin: 0 0 6px; }
+    .result p { margin: 4px 0; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <!-- ส่วนหัว (Header) -->
+  <header class="site-header">
+    <div class="header-overlay">
+      <div class="header-container">
+        <div class="header-title">
+          <h1>รับสมัครนักศึกษา</h1>
+          <p>มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ</p>
+        </div>
+        <div class="header-logo">
+          <span class="logo-orange">K</span><span class="logo-green">MUTNB</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-bar"></div>
+  </header>
+
+  <!-- แถบเมนูด้านบน (Navigation) -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <ul>
+        <li><a href="index.html">หน้าแรก</a></li>
+        <li><a href="apply.html">รับสมัคร</a></li>
+        <li><a href="subject.html">หลักสูตร</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- เนื้อหาหลัก (Main Content) -->
+  <main class="main-content">
+
+    <section class="banner-section">
+      <img src="img/5.PNG" alt="เปิดรับสมัครแล้ววันนี้ DEK70 FITM" class="banner-img">
+    </section>
+
+    <section class="form-card">
+
+      <div class="form-header">
+        <img src="img/4.png" alt="ตรามหาวิทยาลัย" class="university-logo">
+        <h2>ยืนยันการสมัครเข้าศึกษาต่อ ปีการศึกษา 2570</h2>
+        <h3>มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ</h3>
+        <p class="sub-notice">กรุณาตรวจสอบข้อมูลด้านล่างให้ถูกต้องก่อนกดยืนยันการสมัคร</p>
+      </div>
+
+      <div class="summary" id="summary">
+
+        <!-- ข้อมูลผู้สมัคร -->
+        <div class="form-section">
+          <h3 class="section-title">ข้อมูลผู้สมัคร</h3>
+          <div class="summary-row"><span class="s-label">คำนำหน้าชื่อ</span><span class="s-value" data-key="prefix"></span></div>
+          <div class="summary-row"><span class="s-label">ชื่อ-นามสกุล</span><span class="s-value" data-key="fullname"></span></div>
+          <div class="summary-row"><span class="s-label">เลขบัตรประชาชน</span><span class="s-value" data-key="idcard"></span></div>
+          <div class="summary-row"><span class="s-label">วัน/เดือน/ปี เกิด</span><span class="s-value" data-key="birthdate"></span></div>
+          <div class="triple-wrap">
+            <div class="summary-row"><span class="s-label">ศาสนา</span><span class="s-value" data-key="religion"></span></div>
+            <div class="summary-row"><span class="s-label">สัญชาติ</span><span class="s-value" data-key="nationality"></span></div>
+            <div class="summary-row"><span class="s-label">เพศ</span><span class="s-value" data-key="gender"></span></div>
+          </div>
+        </div>
+
+        <!-- ข้อมูลวุฒิการศึกษา -->
+        <div class="form-section">
+          <h3 class="section-title">ข้อมูลวุฒิการศึกษาที่ใช้สมัคร</h3>
+          <div class="summary-row"><span class="s-label">วุฒิการศึกษาที่สมัคร</span><span class="s-value" data-key="education"></span></div>
+          <div class="summary-row"><span class="s-label">ประเภทวิชา</span><span class="s-value" data-key="major"></span></div>
+          <div class="summary-row"><span class="s-label">ชื่อสถาบันการศึกษา</span><span class="s-value" data-key="school"></span></div>
+          <div class="summary-row"><span class="s-label">GPAX</span><span class="s-value" data-key="gpax"></span></div>
+        </div>
+
+        <!-- คณะและสาขา -->
+        <div class="form-section">
+          <h3 class="section-title">คณะและสาขาวิชาที่สมัคร</h3>
+          <div class="summary-row"><span class="s-label">คณะ</span><span class="s-value" data-key="faculty"></span></div>
+          <div class="summary-row"><span class="s-label">สาขา</span><span class="s-value" data-key="branch"></span></div>
+        </div>
+
+        <div class="form-confirmation">
+          <h3 class="confirm-title">ยืนยันการสมัคร</h3>
+          <div class="warning-text">
+            <p>เมื่อกดยืนยันการสมัครแล้ว จะไม่สามารถแก้ไขข้อมูลได้ หากพบว่าข้อมูลไม่ถูกต้อง กรุณากด "แก้ไขข้อมูล" เพื่อกลับไปแก้ไขก่อน</p>
+          </div>
+          <div class="actions" id="actions">
+            <a class="btn btn-edit" href="apply.html">แก้ไขข้อมูล</a>
+            <button type="button" class="btn-confirm" id="confirmBtn">ยืนยันการสมัคร</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="result" id="result" role="status">
+        <h3>ยืนยันการสมัครเรียบร้อยแล้ว</h3>
+        <p id="resultName"></p>
+        <p>ขอบคุณที่สนใจสมัครเข้าศึกษาต่อ</p>
+        <div class="actions"><a class="btn btn-confirm" href="index.html">กลับหน้าแรก</a></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ส่วนท้าย (Footer) -->
+  <footer class="site-footer">
+    <div class="footer-overlay">
+      <div class="footer-container">
+
+        <div class="footer-contact">
+          <h3>สถานที่ตั้ง</h3>
+          <p>📍 มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ</p>
+          <p class="address-detail">1518 ถนนประชาราษฎร์ 1 แขวงวงศ์สว่าง เขตบางซื่อ กรุงเทพฯ 10800</p>
+
+          <h3>ติดต่อ</h3>
+          <p>📞 โทร +66 2-555-2000</p>
+          <p>📠 แฟกซ์ +66 2-555-2000</p>
+          <p>✉ อีเมล : contact@op.kmutnb.ac.th</p>
+        </div>
+
+        <div class="footer-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.3311697241257!2d100.51167431526466!3d13.812260990308064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29b8778000001%3A0x133d1a8069d300e8!2sKing%20Mongkut's%20University%20of%20Technology%20North%20Bangkok!5e0!3m2!1sth!2sth!4v1680000000000!5m2!1sth!2sth"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var data = null;
+      try { data = JSON.parse(sessionStorage.getItem('applicantData') || 'null'); } catch (err) {}
+
+      // ถ้าไม่มีข้อมูล (เข้าหน้านี้ตรง ๆ) ให้กลับไปกรอกใบสมัคร
+      if (!data) { window.location.replace('apply.html'); return; }
+
+      // แสดงวันเกิดเป็นรูปแบบไทย (พ.ศ.)
+      var birth = data.birthdate;
+      if (birth) {
+        var dt = new Date(birth + 'T00:00:00');
+        if (!isNaN(dt)) {
+          birth = dt.toLocaleDateString('th-TH', { day: 'numeric', month: 'long', year: 'numeric' });
+        }
+      }
+      var shown = Object.assign({}, data, { birthdate: birth });
+
+      document.querySelectorAll('[data-key]').forEach(function (el) {
+        el.textContent = shown[el.getAttribute('data-key')] || '-';
+      });
+
+      document.getElementById('confirmBtn').addEventListener('click', function () {
+        // นำข้อมูลส่งไปเซิร์ฟเวอร์/API ได้ที่นี่
+        console.log('ยืนยันใบสมัคร:', data);
+
+        try { sessionStorage.removeItem('applicantData'); } catch (err) {}
+        document.getElementById('summary').style.display = 'none';
+        document.getElementById('resultName').textContent = (data.prefix || '') + (data.fullname || '');
+        var result = document.getElementById('result');
+        result.style.display = 'block';
+        result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    })();
+  </script>
+
+</body>
+</html>
